@@ -6,6 +6,18 @@
     <version>0.0.1</version>
     <packaging>war</packaging>
 
+    <profiles>
+        <profile>
+            <id>server1</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <tomcat-server>localhost</tomcat-server>
+                <tomcat-url>http://localhost:8001/manager/text</tomcat-url>
+            </properties>
+        </profile>
+    </profiles>
 
 <dependencies>
 
@@ -21,11 +33,28 @@
             <version>3.1.2.2</version>
             <scope>provided</scope>
         </dependency>
+    <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
 
     </dependencies>
    <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <url>http://127.0.0.1:8080/manager/text</url>
+                        <server>server1</server>
+                        <path>/demo</path>
+                        <username>tomcat</username>
+                        <password>tomcat</password>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
