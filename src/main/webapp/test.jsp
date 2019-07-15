@@ -6,5 +6,6 @@
     <body>
     New Page
     <p> date <%= new java.util.Date() %>
+    <div> version </div>
     </body>
     </html>
